@@ -38,8 +38,11 @@ namespace Redis.ConsoleApp
             // lab 6 Hash
             // HashLab.LabSetGet(db);
 
-            // lab 7 set
-            SetLab.SetMembers(db);
+            // lab 7 Set
+            // SetLab.SetMembers(db);
+
+            // lab 8 HyperLogLogs
+            HyperLogLab.CountLab(db, 10000);
 
             Console.ReadKey();
         }
