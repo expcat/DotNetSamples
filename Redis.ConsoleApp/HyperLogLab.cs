@@ -5,7 +5,7 @@ namespace Redis.ConsoleApp
     public class HyperLogLab
     {
         private static readonly string key = "lab:hyperlog";
-        public static void CountLab(IDatabase db, int count)
+        public static void LabCount(IDatabase db, int count)
         {
             db.HyperLogLogAdd(key, 1, CommandFlags.FireAndForget);
             db.HyperLogLogAdd(key, 2, CommandFlags.FireAndForget);

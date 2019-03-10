@@ -71,10 +71,14 @@ namespace Redis.ConsoleApp
                 var work = db.ListRightPop(key);
                 if (work.HasValue) System.Console.WriteLine(work);
             });
+            var batch = db.CreateBatch();
             for (int i = 0; i < 10; i++)
             {
-                db.ListLeftPush(key, "work" + i);
-                sub.Publish(channel, "");
+                batch.ListLeftPushAsync(key, "work" + i);
+                batch.PublishAsync(channel, "");
+                // db.ListLeftPush(key, "work" + i);
+                // sub.Publish(channel, "");
+                batch.Execute();
                 Thread.Sleep(1000);
             }
         }

@@ -33,7 +33,7 @@ namespace Redis.ConsoleApp
             //ListLab.LabPushPopTest(db);
 
             // test 2 代替阻塞队列实现
-            // ListLab.LabInsteadPushPopTest(con, db);
+            // ListLab.LabInsteadBPushPopTest(con, db);
 
             // lab 6 Hash
             // HashLab.LabSetGet(db);
@@ -42,8 +42,16 @@ namespace Redis.ConsoleApp
             // SetLab.SetMembers(db);
 
             // lab 8 HyperLogLogs
-            HyperLogLab.CountLab(db, 10000);
+            // HyperLogLab.LabCount(db, 10000);
 
+            // lab 9 SortedSet
+            // SortedSetLab.LabSetGet(db, 1000);
+
+            // lab 10 PubSub
+            // PubSubLab.LabChannel(con);
+
+            // lab 11 Tran/Batch
+            // TranscationLab.LabTanscation(db);
             Console.ReadKey();
         }
     }
