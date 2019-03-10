@@ -52,6 +52,13 @@ namespace Redis.ConsoleApp
 
             // lab 11 Tran/Batch
             // TranscationLab.LabTanscation(db);
+
+            // lab 12 Scan
+            // ScanLab.LabScan(db, con);
+
+            // lab 13 Lua
+            LuaLab.LabLua(db, con);
+
             Console.ReadKey();
         }
     }
