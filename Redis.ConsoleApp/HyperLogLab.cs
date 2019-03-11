@@ -7,15 +7,18 @@ namespace Redis.ConsoleApp
         private static readonly string key = "lab:hyperlog";
         public static void LabCount(IDatabase db, int count)
         {
-            db.HyperLogLogAdd(key, 1, CommandFlags.FireAndForget);
-            db.HyperLogLogAdd(key, 2, CommandFlags.FireAndForget);
-            db.HyperLogLogAdd(key, 1, CommandFlags.FireAndForget);
-            db.HyperLogLogAdd(key, 3, CommandFlags.FireAndForget);
+            var batch = db.CreateBatch();
+            batch.HyperLogLogAddAsync(key, 1, CommandFlags.FireAndForget);
+            batch.HyperLogLogAddAsync(key, 2, CommandFlags.FireAndForget);
+            batch.HyperLogLogAddAsync(key, 1, CommandFlags.FireAndForget);
+            batch.HyperLogLogAddAsync(key, 3, CommandFlags.FireAndForget);
+            batch.Execute();
             System.Console.WriteLine($"total:4|result:{db.HyperLogLogLength(key)}");
             for (int i = 0; i < count; i++)
             {
-                db.HyperLogLogAdd(key, i, CommandFlags.FireAndForget);
+                batch.HyperLogLogAddAsync(key, i, CommandFlags.FireAndForget);
             }
+            batch.Execute();
             System.Console.WriteLine($"total:{count}|result:{db.HyperLogLogLength(key)}");
         }
     }

@@ -57,7 +57,19 @@ namespace Redis.ConsoleApp
             // ScanLab.LabScan(db, con);
 
             // lab 13 Lua
-            LuaLab.LabLua(db, con);
+            // LuaLab.LabLua(db, con);
+
+            // lab 14 Limit
+            // LimitLab.LabLimit(db);
+
+            // lab 15 Lock
+            // LockLab.LabLock(db);
+
+            // lab 16 Stream
+            // StreamLab.LabStream(db);
+
+            // lab 17 Stream Group Customer
+            // StreamLab.LabCustomer(db);
 
             Console.ReadKey();
         }
