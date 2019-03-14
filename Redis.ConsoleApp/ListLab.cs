@@ -92,10 +92,10 @@ namespace Redis.ConsoleApp
                 {
                     db.ListRightPush(key, i);
                     // System.Console.WriteLine($"rpush {i}");
-                    Thread.Sleep(5000);
+                    Thread.Sleep(8000);
                 }
             });
-            ConnectionMultiplexer con = ConnectionMultiplexer.Connect($"{ConfigHelper.host},password={ConfigHelper.password},allowAdmin=true,connectTimeout=20000,responseTimeout=20000,syncTimeout=20000");
+            ConnectionMultiplexer con = ConnectionMultiplexer.Connect($"{ConfigHelper.host},password={ConfigHelper.password},allowAdmin=true,syncTimeout=20000");
             System.Console.WriteLine(con.TimeoutMilliseconds);
             var db_new = con.GetDatabase(1);
             while (true)
