@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using System.Threading;
 using System.Threading.Tasks;
 using Redis.Extension;
@@ -80,6 +81,41 @@ namespace Redis.ConsoleApp
                 // sub.Publish(channel, "");
                 batch.Execute();
                 Thread.Sleep(1000);
+            }
+        }
+
+        public static void labBPushPopTest(IDatabase db)
+        {
+            Task.Run(() =>
+            {
+                for (int i = 0; i < 100; i++)
+                {
+                    db.ListRightPush(key, i);
+                    // System.Console.WriteLine($"rpush {i}");
+                    Thread.Sleep(5000);
+                }
+            });
+            ConnectionMultiplexer con = ConnectionMultiplexer.Connect($"{ConfigHelper.host},password={ConfigHelper.password},allowAdmin=true,connectTimeout=20000,responseTimeout=20000,syncTimeout=20000");
+            System.Console.WriteLine(con.TimeoutMilliseconds);
+            var db_new = con.GetDatabase(1);
+            while (true)
+            {
+                Stopwatch sw = new Stopwatch();
+                sw.Start();
+                var result = db_new.Execute("blpop", key, 10);
+                sw.Stop();
+                if (result.IsNull)
+                {
+                    System.Console.WriteLine($"blpop null | {sw.ElapsedMilliseconds}ms");
+                }
+                else
+                {
+                    if (result.Type == ResultType.MultiBulk)
+                    {
+                        RedisResult[] results = (RedisResult[]) result;
+                        System.Console.WriteLine($"blpop {results[0]} | {results[1]} | {sw.ElapsedMilliseconds}ms");
+                    }
+                }
             }
         }
     }

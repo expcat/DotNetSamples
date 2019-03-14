@@ -71,6 +71,9 @@ namespace Redis.ConsoleApp
             // lab 17 Stream Group Customer
             // StreamLab.LabCustomer(db);
 
+            // lab 18 BLPOP
+            ListLab.labBPushPopTest(db);
+
             Console.ReadKey();
         }
     }
