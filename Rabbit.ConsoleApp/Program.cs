@@ -18,11 +18,27 @@ namespace Rabbit.ConsoleApp
             };
 
             // lab 1 RabbitClient
-            if (args.Length > 0 && args[0].Equals("client", StringComparison.OrdinalIgnoreCase))
-                RabbitClientLab.LabClientPublish(factory);
-            else
-                RabbitClientLab.LabClientReceive(factory);
+            // if (args.Length > 0 && args[0].Equals("publish", StringComparison.OrdinalIgnoreCase))
+            //     RabbitClientLab.LabClientPublish(factory);
+            // else
+            //     RabbitClientLab.LabClientReceive(factory);
 
+            //lab 2 相同 Exchange 不同 RoutingKey 不同队列
+            if (args.Length > 0)
+            {
+                if (args[0].Equals("else", StringComparison.OrdinalIgnoreCase))
+                {
+                    RabbitClientLab.LabClientReceiveWithBindElse(factory);
+                }
+                else if (args[0].Equals("error", StringComparison.OrdinalIgnoreCase))
+                {
+                    RabbitClientLab.LabClientReceiveWithBindError(factory);
+                }
+            }
+            else
+            {
+                RabbitClientLab.LabClientPublishWithBind(factory);
+            }
         }
     }
 }
