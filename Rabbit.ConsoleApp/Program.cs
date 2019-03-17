@@ -42,14 +42,24 @@ namespace Rabbit.ConsoleApp
             // }
 
             // lab 3 Fanout 广播
+            // for (int i = 1; i <= 2; i++)
+            // {
+            //     Task.Factory.StartNew((index) =>
+            //     {
+            //         FanoutLab.FanoutReceive(factory, index.ToString());
+            //     }, i.ToString());
+            // }
+            // FanoutLab.FanoutPublish(factory);
+
+            // lab 4 Headers
             for (int i = 1; i <= 2; i++)
             {
                 Task.Factory.StartNew((index) =>
                 {
-                    FanoutLab.FanoutReceive(factory, index.ToString());
+                    Headers.HeadersReceive(factory, index.ToString(), int.Parse(index.ToString()) % 2 == 0);
                 }, i.ToString());
             }
-            FanoutLab.FanoutPublish(factory);
+            Headers.HeadersPublish(factory);
         }
     }
 }
