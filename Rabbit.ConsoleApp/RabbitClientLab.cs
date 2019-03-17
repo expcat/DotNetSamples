@@ -45,7 +45,7 @@ namespace Rabbit.ConsoleApp
             using(var channel = connection.CreateModel())
             {
                 //3.1 声明 Exchange
-                string exchange = "myexchange";
+                string exchange = "direct";
                 channel.ExchangeDeclare(exchange, ExchangeType.Direct, false, false, null);
 
                 //3.2 声明队列

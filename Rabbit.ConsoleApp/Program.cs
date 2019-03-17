@@ -1,4 +1,5 @@
 using System;
+using System.Threading.Tasks;
 using Rabbit.Extension;
 using RabbitMQ.Client;
 
@@ -23,22 +24,32 @@ namespace Rabbit.ConsoleApp
             // else
             //     RabbitClientLab.LabClientReceive(factory);
 
-            //lab 2 相同 Exchange 不同 RoutingKey 不同队列
-            if (args.Length > 0)
+            // lab 2 相同 Exchange 不同 RoutingKey 不同队列
+            // if (args.Length > 0)
+            // {
+            //     if (args[0].Equals("else", StringComparison.OrdinalIgnoreCase))
+            //     {
+            //         RabbitClientLab.LabClientReceiveWithBindElse(factory);
+            //     }
+            //     else if (args[0].Equals("error", StringComparison.OrdinalIgnoreCase))
+            //     {
+            //         RabbitClientLab.LabClientReceiveWithBindError(factory);
+            //     }
+            // }
+            // else
+            // {
+            //     RabbitClientLab.LabClientPublishWithBind(factory);
+            // }
+
+            // lab 3 Fanout 广播
+            for (int i = 1; i <= 2; i++)
             {
-                if (args[0].Equals("else", StringComparison.OrdinalIgnoreCase))
+                Task.Factory.StartNew((index) =>
                 {
-                    RabbitClientLab.LabClientReceiveWithBindElse(factory);
-                }
-                else if (args[0].Equals("error", StringComparison.OrdinalIgnoreCase))
-                {
-                    RabbitClientLab.LabClientReceiveWithBindError(factory);
-                }
+                    FanoutLab.FanoutReceive(factory, index.ToString());
+                }, i.ToString());
             }
-            else
-            {
-                RabbitClientLab.LabClientPublishWithBind(factory);
-            }
+            FanoutLab.FanoutPublish(factory);
         }
     }
 }
