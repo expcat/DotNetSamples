@@ -9,7 +9,6 @@ namespace Rabbit.ConsoleApp
 {
     public class TopicLab
     {
-
         private static readonly string exchange = "topicexchange";
         public static void TopicPublish(ConnectionFactory factory)
         {

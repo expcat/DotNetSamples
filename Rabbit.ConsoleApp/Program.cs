@@ -61,16 +61,19 @@ namespace Rabbit.ConsoleApp
             // }
             // Headers.HeadersPublish(factory);
 
-            //lab 5 Topic
-            for (int i = 1; i <= 2; i++)
-            {
-                Task.Factory.StartNew((index) =>
-                {
-                    TopicLab.TopicReceive(factory, index.ToString(), int.Parse(index.ToString()) % 2 == 0 ? "*.com" : "*.cn");
-                }, i.ToString());
-            }
-            TopicLab.TopicPublish(factory);
+            // lab 5 Topic
+            // for (int i = 1; i <= 2; i++)
+            // {
+            //     Task.Factory.StartNew((index) =>
+            //     {
+            //         TopicLab.TopicReceive(factory, index.ToString(), int.Parse(index.ToString()) % 2 == 0 ? "*.com" : "*.cn");
+            //     }, i.ToString());
+            // }
+            // TopicLab.TopicPublish(factory);
 
+            // lab 6 RPC
+            Task.Run(() => RPCLab.RPCServer(factory));
+            RPCLab.RPCClient(factory);
         }
     }
 }
