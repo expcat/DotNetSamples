@@ -52,14 +52,25 @@ namespace Rabbit.ConsoleApp
             // FanoutLab.FanoutPublish(factory);
 
             // lab 4 Headers
+            // for (int i = 1; i <= 2; i++)
+            // {
+            //     Task.Factory.StartNew((index) =>
+            //     {
+            //         Headers.HeadersReceive(factory, index.ToString(), int.Parse(index.ToString()) % 2 == 0);
+            //     }, i.ToString());
+            // }
+            // Headers.HeadersPublish(factory);
+
+            //lab 5 Topic
             for (int i = 1; i <= 2; i++)
             {
                 Task.Factory.StartNew((index) =>
                 {
-                    Headers.HeadersReceive(factory, index.ToString(), int.Parse(index.ToString()) % 2 == 0);
+                    TopicLab.TopicReceive(factory, index.ToString(), int.Parse(index.ToString()) % 2 == 0 ? "*.com" : "*.cn");
                 }, i.ToString());
             }
-            Headers.HeadersPublish(factory);
+            TopicLab.TopicPublish(factory);
+
         }
     }
 }
