@@ -51,7 +51,7 @@ namespace Rabbit.ConsoleApp
                 channel.QueueDeclare(queue, false, false, false, new Dictionary<string, object> { { "x-max-length", 10 } });
                 for (int i = 0; i < 15; i++)
                 {
-                    channel.BasicPublish(string.Empty, string.Empty, null, Encoding.UTF8.GetBytes("hello" + i));
+                    channel.BasicPublish(string.Empty, queue, null, Encoding.UTF8.GetBytes("hello" + i));
                 }
                 Console.WriteLine("Send finished");
                 EventingBasicConsumer consumer = new EventingBasicConsumer(channel);

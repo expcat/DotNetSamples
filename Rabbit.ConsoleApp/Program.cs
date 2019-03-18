@@ -86,6 +86,11 @@ namespace Rabbit.ConsoleApp
 
             // lab 8 Queue Arguments 3
             // QueueArgumentsLab.MaxPriorityLab(factory);
+
+            // lab 9 Message Control
+            // MessageControl.AckLab(factory);
+            // MessageControl.PropLab(factory);
+            // MessageControl.ConsumerLab(factory);
         }
     }
 }
