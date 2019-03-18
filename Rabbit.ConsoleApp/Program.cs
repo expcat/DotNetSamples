@@ -72,8 +72,20 @@ namespace Rabbit.ConsoleApp
             // TopicLab.TopicPublish(factory);
 
             // lab 6 RPC
-            Task.Run(() => RPCLab.RPCServer(factory));
-            RPCLab.RPCClient(factory);
+            // Task.Run(() => RPCLab.RPCServer(factory));
+            // RPCLab.RPCClient(factory);
+
+            // lab 7 Queue Arguments 1
+            // QueueArgumentsLab.QueueTTLLab(factory);
+            // QueueArgumentsLab.MessageTTLLab(factory);
+            // QueueArgumentsLab.ExpireLab(factory);
+            // QueueArgumentsLab.MaxLengthLab(factory);
+
+            // lab 7 Queue Arguments 2
+            // QueueArgumentsLab.DeadLetterLab(factory);
+
+            // lab 8 Queue Arguments 3
+            // QueueArgumentsLab.MaxPriorityLab(factory);
         }
     }
 }
