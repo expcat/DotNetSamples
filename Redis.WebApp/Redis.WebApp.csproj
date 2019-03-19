@@ -10,7 +10,7 @@
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
     <PackageReference Include="Microsoft.Extensions.Caching.StackExchangeRedis" Version="2.2.0" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.0" />
-    <PackageReference Include="StackExchange.Redis" Version="2.0.519" />
+    <PackageReference Include="StackExchange.Redis" Version="2.0.571"/>
   </ItemGroup>
 
   <ItemGroup>

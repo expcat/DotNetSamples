@@ -1,22 +1,18 @@
 <Project Sdk="Microsoft.NET.Sdk">
-
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <LangVersion>latest</LangVersion>
   </PropertyGroup>
-
   <ItemGroup>
-    <PackageReference Include="MessagePack" Version="1.7.3.4" />
-    <PackageReference Include="StackExchange.Redis" Version="2.0.519" />
-    <PackageReference Include="Microsoft.Extensions.Configuration" Version="2.2.0" />
-    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="2.2.0" />
-    <PackageReference Include="Microsoft.Extensions.Caching.Abstractions" Version="2.2.0" />
+    <PackageReference Include="MessagePack" Version="1.7.3.4"/>
+    <PackageReference Include="StackExchange.Redis" Version="2.0.571"/>
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="2.2.0"/>
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="2.2.0"/>
+    <PackageReference Include="Microsoft.Extensions.Caching.Abstractions" Version="2.2.0"/>
   </ItemGroup>
-
   <ItemGroup>
     <None Update="secret.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
-
 </Project>

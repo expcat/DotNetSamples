@@ -4,7 +4,7 @@
     <TargetFramework>netcoreapp2.2</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="StackExchange.Redis" Version="2.0.519" />
+    <PackageReference Include="StackExchange.Redis" Version="2.0.571"/>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Redis.Extension\Redis.Extension.csproj" />
