@@ -10,16 +10,11 @@ namespace Mongo.ConsoleApp
         {
             var client = new MongoClient($"mongodb://{ConfigHelper.user}:{ConfigHelper.password}@{ConfigHelper.host}:{ConfigHelper.port}");
             var db = client.GetDatabase("testdb");
-            // db.CreateCollection("test_collection");
-            var collection = db.GetCollection<TestModel>("test_collection");
-            collection.InsertOne(new TestModel { Id = 1, Name = "hello" });
-            Console.WriteLine("添加成功！");
-        }
-    }
 
-    public class TestModel
-    {
-        public int Id { get; set; }
-        public string Name { get; set; }
+            // lab 1 Insert & Get & Delete
+            InsertGetDelete.LabInsert(db);
+            InsertGetDelete.LabGet(db);
+            InsertGetDelete.LabDelete(db);
+        }
     }
 }
