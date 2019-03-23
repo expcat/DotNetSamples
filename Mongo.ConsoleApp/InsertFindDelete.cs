@@ -1,29 +1,30 @@
 using System;
+using MongoDB.Bson;
 using MongoDB.Driver;
-using Newtonsoft.Json;
 
 namespace Mongo.ConsoleApp
 {
-    public class InsertGetDelete
+    public class InsertFindDelete
     {
+        private static ObjectId id;
         public static void LabInsert(IMongoDatabase db)
         {
             var collection = db.GetCollection<Member>(typeof(Member).Name);
-            collection.InsertOne(new Member { Id = 1, Name = "Jack", Male = true, Brithday = DateTime.Now });
+            id = ObjectId.GenerateNewId();
+            collection.InsertOne(new Member { Id = id, Name = "Jack", Male = true, CreateTime = DateTime.Now, Age = 12 });
             Console.WriteLine("添加成功！");
         }
 
-        public static void LabGet(IMongoDatabase db)
+        public static void LabFind(IMongoDatabase db)
         {
             var collection = db.GetCollection<Member>(typeof(Member).Name);
-            var result = collection.Find(m => m.Name == "Jack").FirstOrDefault();
-            Console.WriteLine(JsonConvert.SerializeObject(result));
+            Console.WriteLine(collection.Find(m => m.Name == "Jack").FirstOrDefault().ToJson());
         }
 
         public static void LabDelete(IMongoDatabase db)
         {
             var collection = db.GetCollection<Member>(typeof(Member).Name);
-            var result = collection.DeleteOne(m => m.Id == 1);
+            var result = collection.DeleteOne(m => m.Id == id);
             Console.WriteLine($"删除 {result.DeletedCount} 条");
         }
     }
