@@ -17,11 +17,18 @@ namespace Mongo.ConsoleApp
             // InsertFindDelete.LabFind(db);
             // InsertFindDelete.LabDelete(db);
 
-            // Lab 2 Find Advanced
+            // lab 2 Find Advanced
+            // using(var unitLab = new UnitLab(db))
+            // {
+            //     FindAdvancedLab.LabFindAll(db);
+            //     FindAdvancedLab.LabFindByFilter(db);
+            // }
+
+            // lab 3 Find By Sort
             using(var unitLab = new UnitLab(db))
             {
-                FindAdvancedLab.LabFindAll(db);
-                FindAdvancedLab.LabFindByFilter(db);
+                FindBySort.Descending(db).GetAwaiter().GetResult();
+                FindBySort.Ascending(db).GetAwaiter().GetResult();
             }
         }
 
